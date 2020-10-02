@@ -3,34 +3,7 @@
     width: $app-video-width;
 
     .react-player {
-        height: auto !important; // Override styling from ReactPlayer package
-        width: 100% !important; // Override styling from ReactPlayer package
-    }
-    
-    .flag {
-        &.goal{
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            width: 33%;
-            background-color: $green;
-            color: $white;
-        }
-
-        &.card{
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 33%;
-
-            &.red {
-                background-color: $red;
-                color: $white;
-            }
-            &.yellow {
-                background-color: $yellow;
-                color: $black;
-            }
-        }
+        height: auto !important; // Overrides styling from ReactPlayer package
+        width: 100% !important; // Overrides styling from ReactPlayer package
     }
 }
