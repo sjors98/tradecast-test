@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Flag from "./Flag";
+import CustomMarquee from './Marquee.js'
 import ReactPlayer from "react-player";
 import data from "../data/data.json"; 
 
@@ -93,11 +94,11 @@ export default class Video extends Component {
         onPause={() => this.setState({ playing: false })}
         controls
         muted
-        // progressInterval= {500}
         onProgress={this.handleProgress}
         />
+      <CustomMarquee />
       {flag}
-      </div>
+    </div>
     )
   }
 }

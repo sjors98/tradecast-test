@@ -1,0 +1,19 @@
+.marquee-wrapper {
+    position: absolute;
+    bottom: 4rem;
+    background-color: $medium-gray;
+    color: $black;
+    padding: .25rem;
+
+    .marquee-child {
+        position: relative;
+        padding: 0 .5rem;
+        
+        &::before {
+            content: "|";
+            position: absolute;
+            left: -.25rem;
+            top: 0;
+        }
+    }
+}
