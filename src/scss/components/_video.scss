@@ -1,4 +1,35 @@
-.App-video {
-    height: auto;
-    width: $app-video-width;
+.video-wrapper {
+    position: relative;
+
+    video {
+        height: auto;
+        width: $app-video-width;
+    }
+    
+    .flag {
+        &.goal{
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 33%;
+            background-color: green;
+            color: $white;
+        }
+
+        &.card{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 33%;
+
+            &.red {
+                background-color: red;
+                color: $white;
+            }
+            &.yellow {
+                background-color: yellow;
+                color: $black;
+            }
+        }
+    }
 }
