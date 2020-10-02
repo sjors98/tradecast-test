@@ -1,23 +1,27 @@
 import React, {Component} from 'react';
+import Flag from "./Flag";
 import ReactPlayer from "react-player";
 import data from "../data/data.json"; 
 
 export default class Video extends Component {
-
   constructor(props) {
     super(props);
-    this.player = React.createRef();
+    this.reactPlayer = React.createRef();
     this.state = {
-    	playing: false
+      playing: true,
+      goal: false,
+      card: false,
+      halftime: false,
     }
 
-    this.goalState = false;
-    this.cardState = false;
-    this.halfTimeState = false;
+    this.flag = {
+      message: [],
+      type: [],
+    }
   }
 
   handleProgress = () => {
-    let currentTime = this.player.current.getCurrentTime();
+    let currentTime = this.reactPlayer.current.getCurrentTime();
     currentTime = Math.floor(currentTime);
 
     data.events.map((events) => { 
@@ -29,12 +33,12 @@ export default class Video extends Component {
               break;
             case "card":
               if(currentTime === events.time) {
-                return this.handleCardFlag(events.player, events.time);  
+                return this.handleCardFlag(events.player, events.cardType, events.time);  
               }
               break;
             case "endHalf":
               if(currentTime === events.time) {
-                return this.handleHalfTime(events.player, events.time);  
+                return this.handleHalfTime(events.time);  
               }
               break;            
             default:
@@ -44,41 +48,55 @@ export default class Video extends Component {
   }
 
   handleGoalFlag = (player, time) => {
-    this.goalState = true;
-    console.log("Goal by " + player);  
-    console.log("Time = " + time);
-    this.goalState = false;
+    this.flag.message = "Goal by " + player + " at " + time + " seconds";
+    this.flag.type = "goal";
+    this.setState({ goal: true });
+    setTimeout(() => {
+      this.setState({ goal: false });
+    }, 5000);
   }
 
-  handleCardFlag = (player, time) => {
-    this.cardState = true;
-    console.log("Card for " + player);  
-    console.log("Time = " + time);
-    this.cardState = false;
+  handleCardFlag = (player, cardType, time) => {
+    this.flag.message = "Card for " + player + " at " + time + " seconds";
+    this.flag.type = "card " + cardType;
+    this.setState({ card: true });
+    setTimeout(() => {
+      this.setState({ card: false });
+    }, 5000);
   }
 
-  handleHalfTime = (player, time) => {
-    this.halfTimeState = true;
-    console.log("Halftime " + player);  
-    console.log("Time = " + time);
-    this.halfTimeState = false;
+  handleHalfTime = (time) => {
+    this.setState({ playing: false });
+    this.setState({ halfTime: true });
+    setTimeout(() => {
+      this.setState({ halftime: false });
+      this.setState({ playing: true });
+    }, 5000);
   }
 
   render() {
-    // Detailed options (props) omitted for readability.    
+    let flag;
+    if (this.state.goal === true) {
+      flag = <Flag message={this.flag.message} type={this.flag.type}/>
+    }
+    else if (this.state.card === true) {
+      flag = <Flag message={this.flag.message} type={this.flag.type}/>
+    }
     return (
-    <div className='wrapper'>
+    <div className='video-wrapper'>
       <ReactPlayer 
-        ref={this.player}
+        ref={this.reactPlayer}
         url='http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_60fps_normal.mp4'
         className='react-player'
         playing={this.state.playing}
+        onPlay={() => this.setState({ playing: true })}
+        onPause={() => this.setState({ playing: false })}
         controls
         muted
         // progressInterval= {500}
         onProgress={this.handleProgress}
-        onPlay={this.handlePlay}
         />
+      {flag}
       </div>
     )
   }
