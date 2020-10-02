@@ -1,9 +1,10 @@
 .video-wrapper {
     position: relative;
+    width: $app-video-width;
 
-    video {
-        height: auto;
-        width: $app-video-width;
+    .react-player {
+        height: auto !important; // Override styling from ReactPlayer package
+        width: 100% !important; // Override styling from ReactPlayer package
     }
     
     .flag {
@@ -12,7 +13,7 @@
             top: 20px;
             right: 20px;
             width: 33%;
-            background-color: green;
+            background-color: $green;
             color: $white;
         }
 
@@ -23,11 +24,11 @@
             width: 33%;
 
             &.red {
-                background-color: red;
+                background-color: $red;
                 color: $white;
             }
             &.yellow {
-                background-color: yellow;
+                background-color: $yellow;
                 color: $black;
             }
         }
