@@ -1,3 +1,18 @@
+## Setup of this project
+
+To run this project first run the `npm install` command in your project directory <br />
+When that is finished run `npm start` in the project directory and the `localhost:3000` will open in your browser.<br />
+
+## Components
+
+To view the component information just have a look at the used components from the react community listed below
+
+* [react-player]https://www.npmjs.com/package/react-player)
+* [react-marquee-slider]https://www.npmjs.com/package/react-marquee-slider)
+* [react-marquee-slider]https://www.npmjs.com/package/react-marquee-slider)
+
+## More information about the install by Create React App
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
