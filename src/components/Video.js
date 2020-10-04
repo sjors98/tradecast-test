@@ -95,7 +95,7 @@ export default class Video extends Component {
     }, 5000);
   }
 
-  handleHalfTime = (time) => {
+  handleHalfTime = () => {
     this.setState({ playing: false });
     this.setState({ halfTime: true });
     setTimeout(() => {
