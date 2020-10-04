@@ -1,0 +1,30 @@
+.video-wrapper {
+    .flag {
+        padding: .5rem 1rem;
+
+        &.goal{
+            position: absolute;
+            top: 2%;
+            left: 2%;
+            width: 33%;
+            background-color: $green;
+            color: $white;
+        }
+
+        &.card{
+            position: absolute;
+            top: 2%;
+            right: 2%;
+            width: 33%;
+
+            &.red {
+                background-color: $red;
+                color: $white;
+            }
+            &.yellow {
+                background-color: $yellow;
+                color: $black;
+            }
+        }
+    }
+}
